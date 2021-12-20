@@ -15,10 +15,6 @@ class TaskModel:                # camel case
     def how_many_days_to_stop(self):
         return (self.stop_date - self.start_date).days
 
-tm1 = TaskModel("Python programming", date(2022, 12, 31))
-tm2 = TaskModel("Signal Processing", stop_date=date(2022, 1, 3), start_date=date(2022, 1, 1))
-print(tm1)
-print(tm2)
 
 
 
