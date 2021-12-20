@@ -1,6 +1,5 @@
 from datetime import date, datetime
 
-
 # model class - determine the structure of the object
 # model class - determine the structure of the data
 class TaskModel:                # camel case
@@ -11,12 +10,13 @@ class TaskModel:                # camel case
         self.status = status
     def __str__(self):                                                                  # str representation of the object
         return f"task name: {self.name} \nstart: {self.start_date.strftime('%Y-%m-%d')} " \
-            f"\nstop: {self.stop_date.strftime('%Y-%m-%d')} \ncurrent status: {self.status}"
-    def get_name(self):         # snake case
-        return self.name
+            f"\nstop: {self.stop_date.strftime('%Y-%m-%d')} \ncurrent status: {self.status} " \
+            f"\ndays to stop: {self.how_many_days_to_stop()}"
+    def how_many_days_to_stop(self):
+        return (self.stop_date - self.start_date).days
 
-tm1 = TaskModel("Python programming", datetime(2020, 12, 31))
-tm2 = TaskModel("Signal Processing", stop_date=datetime(2022, 10, 1), start_date=datetime(2022, 1, 1))
+tm1 = TaskModel("Python programming", date(2022, 12, 31))
+tm2 = TaskModel("Signal Processing", stop_date=date(2022, 1, 3), start_date=date(2022, 1, 1))
 print(tm1)
 print(tm2)
 
